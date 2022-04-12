@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
         m_Movement = horizontal * transform.right + transform.forward;
         m_Movement *= 0.01f;
 
-        bool onGround = Physics.Raycast(transform.position, Vector3.down, 0.6f);
+        bool onGround = Physics.Raycast(transform.position, Vector3.down, 0.55f);
 
         if ((Input.GetKeyDown("j") || Input.GetKeyDown("k")) && onGround)
         {

@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
         {
             // generate next section
             print("Generating new section");
-            Corridor.GetComponent<PanelManager>().generateNextSection();
+            Corridor.GetComponent<SectionManager>().generateNextSection();
 
             // update game collision box
             transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1f);
