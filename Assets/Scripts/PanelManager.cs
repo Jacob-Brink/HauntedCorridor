@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PanelManager : MonoBehaviour
 {
-    
+
     public GameObject Panel;
     public GameObject Corridor;
     public int numPanels = 4;
@@ -28,7 +28,7 @@ public class PanelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     bool between(int positionA, int positionB, int value)
@@ -109,6 +109,10 @@ public class PanelManager : MonoBehaviour
 
         if (sections.Count >= SPAWN_DISTANCE + SECTIONS_BEHIND_PLAYER)
         {
+            for (int i = 0; i < sections[0].Count; i++)
+            {
+                Destroy(sections[0][i]);
+            }
             sections.RemoveAt(0);
         }
 

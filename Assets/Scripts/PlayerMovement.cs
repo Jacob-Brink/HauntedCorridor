@@ -5,10 +5,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 1f;
+    public float Jump = 1f;
     public Vector3 massOffset = new Vector3(0, 0, 0);
     public Collider baseCollider;
 
-    private float SCALING = 0.04f;
     Vector3 m_Movement;
     Rigidbody m_Rigidbody;
 
@@ -25,36 +25,17 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         float horizontal = Input.GetAxis("Horizontal");
-        m_Movement = horizontal * transform.right + transform.forward * 1;
-        m_Movement *= 0.2f;
+        m_Movement = horizontal * transform.right + transform.forward;
+        m_Movement *= 0.01f;
 
+        bool onGround = Physics.Raycast(transform.position, Vector3.down, 0.6f);
 
-        Vector3 newVelocity = new Vector3(0, 0, 0);
-
-        if (Input.GetKeyDown("j"))
+        if ((Input.GetKeyDown("j") || Input.GetKeyDown("k")) && onGround)
         {
-            Physics.gravity = Quaternion.AngleAxis(-90, Vector3.forward) * Physics.gravity;
-            newVelocity += transform.up;
-            //m_Rigidbody.AddTorque(transform.forward * -2000);
-        }
-        else if (Input.GetKeyDown("k"))
-        {
-            Physics.gravity = Quaternion.AngleAxis(90, Vector3.forward) * Physics.gravity;
-            newVelocity += transform.up;
-
-            //m_Rigidbody.AddTorque(transform.forward * 2000);
+            m_Rigidbody.AddForce(Vector3.up * Jump, ForceMode.Impulse);
         }
 
         m_Rigidbody.MovePosition(m_Rigidbody.position + m_Movement);
-        m_Rigidbody.AddForce(newVelocity * 100);
-
-    }
-
-    public void TouchGround()
-    {
-        //print("Ground Collision");
-        //m_Rigidbody.angularVelocity = Vector3.zero;
-        //m_Rigidbody.ResetInertiaTensor();
     }
 
 }

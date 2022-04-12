@@ -318,11 +318,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4323819395766173119, guid: ee7d23aae99a8364ca5c6d29d4a1fd94, type: 3}
   m_PrefabInstance: {fileID: 4323819394856693044}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1304450674 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 929307880990377001, guid: ee7d23aae99a8364ca5c6d29d4a1fd94, type: 3}
-  m_PrefabInstance: {fileID: 4323819394856693044}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1550949225 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 705357804369494488, guid: d715ecbaca2232b4dbf711cc5cacb8c3, type: 3}
@@ -337,7 +332,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1877134704}
-  - component: {fileID: 1877134703}
   m_Layer: 0
   m_Name: Corridor
   m_TagString: Untagged
@@ -345,23 +339,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1877134703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1877134702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adf6105a48fa154499990e40068860b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Panel: {fileID: 1304450674}
-  Corridor: {fileID: 1877134702}
-  numPanels: 5
-  SPAWN_DISTANCE: 20
-  SECTIONS_BEHIND_PLAYER: 10
 --- !u!4 &1877134704
 Transform:
   m_ObjectHideFlags: 0

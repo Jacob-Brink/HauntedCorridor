@@ -17,13 +17,4 @@ public class GroundCollision : MonoBehaviour
         
     }
 
-    void OnTriggerEnter(Collider collision)
-    {
-        if (collision.name == "Panel")
-        {
-            GameObject player = transform.parent.gameObject;
-            player.GetComponent<PlayerMovement>().TouchGround();
-        }
-    }
-
 }
