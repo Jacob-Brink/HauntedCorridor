@@ -6,6 +6,7 @@ public class PanelManager : MonoBehaviour
 {
     
     public GameObject Panel;
+    public GameObject Corridor;
     public int numPanels = 4;
     public int SPAWN_DISTANCE = 20;
     public int SECTIONS_BEHIND_PLAYER = 10;
