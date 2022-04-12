@@ -8,8 +8,10 @@ public class PanelManager : MonoBehaviour
     public GameObject Panel;
     public int numPanels = 4;
     public int SPAWN_DISTANCE = 20;
+    public int SECTIONS_BEHIND_PLAYER = 10;
     private int bottomLeftCorner, bottomRightCorner, upperRightCorner, upperLeftCorner;
     private float currentPosition = 0f;
+    private List<List<GameObject>> sections = new List<List<GameObject>>();
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +44,7 @@ public class PanelManager : MonoBehaviour
 
     }
 
-    void placePanel(int sectionPosition, float z)
+    GameObject placePanel(int sectionPosition, float z)
     {
         // convert sectionPosition (clockwise coordinate system of section panels) to x and y panel units
         int x, y;
@@ -84,21 +86,30 @@ public class PanelManager : MonoBehaviour
         float realY = (y - (numPanels - 1) / 2f) * panelWidth;
 
         Vector3 offset = new Vector3(realX, realY, z);
-        Instantiate(Panel, transform.position + offset, rotation);
+        return Instantiate(Panel, transform.position + offset, rotation);
     }
 
     public void generateNextSection()
     {
+        List<GameObject> panels = new List<GameObject>();
+
         // spawn next section
         for (int i = 0; i < numPanels * 4; i++)
         {
             if (Random.Range(0f, 1f) < 0.99)
             {
-                placePanel(i, currentPosition);
+                panels.Add(placePanel(i, currentPosition));
             }
         }
 
         currentPosition += 1f;
+
+        sections.Add(panels);
+
+        if (sections.Count >= SPAWN_DISTANCE + SECTIONS_BEHIND_PLAYER)
+        {
+            sections.RemoveAt(0);
+        }
 
     }
 
