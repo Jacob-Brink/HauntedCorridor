@@ -33,7 +33,6 @@ public class GameManager : MonoBehaviour
         if (other.name == "Player")
         {
             // generate next section
-            print("Generating new section");
             Corridor.GetComponent<SectionManager>().generateNextSection();
 
             // update game collision box
